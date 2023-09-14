@@ -1,0 +1,28 @@
+name: Push Nuget Package
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 7.0.x
+
+    - name: Pack
+      run: dotnet pack  ./Package/Elyspio.OpenTelemetry.csproj --configuration Release
+
+    - name: Setup Nuget source
+      run: dotnet nuget add source --username Elyspio --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/Elyspio/index.json"
+
+    - name: Push package
+      run: dotnet nuget push "./Package/bin/Release/*.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
