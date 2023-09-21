@@ -1,4 +1,5 @@
-﻿using Elyspio.OpenTelemetry.Technical.Helpers;
+﻿using Elyspio.OpenTelemetry.Constants;
+using Elyspio.OpenTelemetry.Technical.Helpers;
 using Elyspio.OpenTelemetry.Tracing.Elements.Base;
 using Microsoft.Extensions.DependencyInjection;
 using OpenTelemetry;
@@ -63,15 +64,27 @@ public class AppOpenTelemetryBuilder<TAssembly>
 	/// <example>
 	/// Par défaut : /swagger
 	/// </example>
-	public string[] IgnorePaths { get; set; } = new[]
+	public  string[] IgnorePaths { get; set; } = new[]
 	{
 		"/swagger"
 	};
+
+
+	/// <summary>
+	/// Chemins à ignorer pour le tracing
+	/// </summary>
+	/// <example>
+	/// Par défaut : /swagger
+	/// </example>
+	public string[] Metters { get; set; } = Array.Empty<string>();
 
 	/// <summary>
 	/// Uri du collector OpenTelemetry
 	/// </summary>
 	public required Uri OtCollectorUri { get; init; }
+
+
+
 
 	/// <summary>
 	/// Active le tracing dans les services de l'application
@@ -80,13 +93,15 @@ public class AppOpenTelemetryBuilder<TAssembly>
 	/// <returns></returns>
 	public OpenTelemetryBuilder Build(IServiceCollection services)
 	{
+		var sources = AssemblyHelper.GetClassWithInterface<TAssembly, ITracingContext>().ToArray();
+
 		return services.AddOpenTelemetry()
 			.ConfigureResource(conf => conf.AddService(_serviceName))
 			.WithTracing(tracing =>
 			{
-				tracing.AddOtlpExporter(o => { o.Endpoint = OtCollectorUri; });
+				tracing.AddSource(sources);
 
-				tracing.AddSource(AssemblyHelper.GetClassWithInterface<TAssembly, ITracingContext>().ToArray());
+				tracing.AddOtlpExporter(o => { o.Endpoint = OtCollectorUri; });
 
 				tracing.SetErrorStatusOnException();
 
@@ -135,7 +150,17 @@ public class AppOpenTelemetryBuilder<TAssembly>
 					.AddProcessInstrumentation()
 					.AddRuntimeInstrumentation()
 					.AddHttpClientInstrumentation()
-					.AddAspNetCoreInstrumentation(o => { o.Filter = (_, ctx) => ctx.Request.Path != "/metrics"; });
+					.AddAspNetCoreInstrumentation();
+
+
+				metric.AddMeter(MetterConstants.DefaultMetters.Concat(sources).Concat(Metters).ToArray());
+
+
+				metric.AddView("request-duration",
+					new ExplicitBucketHistogramConfiguration
+					{
+						Boundaries = new[] { 0, 0.005, 0.01, 0.025, 0.05, 0.075, 0.1, 0.25, 0.5, 0.75, 1, 2.5, 5, 7.5, 10 }
+					});
 			});
 	}
 }

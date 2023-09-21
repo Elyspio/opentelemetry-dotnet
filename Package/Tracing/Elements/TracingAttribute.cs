@@ -12,7 +12,6 @@ public abstract class TracingAttribute : Attribute, ITracingContext
 {
 	private readonly string _sourceName;
 
-
 	/// <inheritdoc />
 	protected TracingAttribute()
 	{

@@ -98,7 +98,8 @@ public static class Log
 		/// <summary>
 		///     Current activity
 		/// </summary>
-		private Activity? Activity { get; }
+		// ReSharper disable once MemberCanBePrivate.Global - Exported for applications' use
+		public Activity? Activity { get; }
 
 
 		/// <summary>
