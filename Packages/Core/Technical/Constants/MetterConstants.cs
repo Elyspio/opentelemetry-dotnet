@@ -2,7 +2,7 @@
 
 public class MetterConstants
 {
-	public static readonly string[] DefaultMetters = new[]
+	public static readonly string[] DefaultMetters =
 	{
 		"Microsoft.AspNetCore.Hosting",
 		"Microsoft.AspNetCore.Http",
@@ -10,6 +10,6 @@ public class MetterConstants
 		"Microsoft.AspNetCore.Server.Kestrel",
 		"System.Net.NameResolution",
 		"System.Net.Security",
-		"System.Net.Sockets",
+		"System.Net.Sockets"
 	};
 }

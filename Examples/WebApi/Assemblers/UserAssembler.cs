@@ -8,7 +8,7 @@ public class UserAssembler : BaseAssembler<User, UserEntity>
 {
 	public override UserEntity Convert(User obj)
 	{
-		return new UserEntity()
+		return new UserEntity
 		{
 			Username = obj.Username,
 			Id = obj.Id
@@ -17,7 +17,7 @@ public class UserAssembler : BaseAssembler<User, UserEntity>
 
 	public override User Convert(UserEntity obj)
 	{
-		return new User()
+		return new User
 		{
 			Username = obj.Username,
 			Id = obj.Id

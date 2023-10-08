@@ -13,7 +13,7 @@ public class UserRepository(ILogger<UserRepository> logger, AppSqlContext contex
 	{
 		using var logger = LogRepository($"{Log.F(@base)}", autoExit: false);
 
-		var result = await context.Users.AddAsync(new UserEntity()
+		var result = await context.Users.AddAsync(new UserEntity
 		{
 			Id = Guid.NewGuid(),
 			Username = @base.Username

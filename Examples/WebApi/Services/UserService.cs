@@ -10,8 +10,8 @@ namespace Elyspio.OpenTelemetry.Examples.WebApi.Services;
 
 public class UserService : TracingService, IUserService
 {
-	private readonly IUserRepository _userRepository;
 	private readonly UserAssembler _userAssembler = new();
+	private readonly IUserRepository _userRepository;
 
 	public UserService(ILogger<UserService> logger, IUserRepository userRepository) : base(logger)
 	{

@@ -1,10 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elyspio.OpenTelemetry", "Package\Elyspio.OpenTelemetry.csproj", "{40B8CC3F-9585-4B3D-86FF-A192D212A30F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elyspio.OpenTelemetry", "Packages\Core\Elyspio.OpenTelemetry.csproj", "{40B8CC3F-9585-4B3D-86FF-A192D212A30F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{0B95E743-8C93-43C0-AB95-D4B318458FC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elyspio.OpenTelemetry.Examples.WebApi", "Examples\Elyspio.OpenTelemetry.Examples.WebApi\Elyspio.OpenTelemetry.Examples.WebApi.csproj", "{4132B836-43EB-4D5C-9C96-79D9A1A28AD6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elyspio.OpenTelemetry.Examples.WebApi", "Examples\WebApi\Elyspio.OpenTelemetry.Examples.WebApi.csproj", "{4132B836-43EB-4D5C-9C96-79D9A1A28AD6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packages", "Packages", "{0BCCCD89-69AE-4E43-AF91-6F415E5FE55F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elyspio.OpenTelemetry.MongoDB", "Packages\MongoDB\Elyspio.OpenTelemetry.MongoDB.csproj", "{4B27676D-7CC5-4F18-91A7-9144BC57E756}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elyspio.OpenTelemetry.Sql", "Packages\Sql\Elyspio.OpenTelemetry.Sql.csproj", "{2000ADE8-C9C7-44C2-A8AA-79D6FA9C2AE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elyspio.OpenTelemetry.Redis", "Packages\Redis\Elyspio.OpenTelemetry.Redis.csproj", "{C6C27295-740F-40B5-917A-0513600B9892}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,8 +28,24 @@ Global
 		{4132B836-43EB-4D5C-9C96-79D9A1A28AD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4132B836-43EB-4D5C-9C96-79D9A1A28AD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4132B836-43EB-4D5C-9C96-79D9A1A28AD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B27676D-7CC5-4F18-91A7-9144BC57E756}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B27676D-7CC5-4F18-91A7-9144BC57E756}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B27676D-7CC5-4F18-91A7-9144BC57E756}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B27676D-7CC5-4F18-91A7-9144BC57E756}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2000ADE8-C9C7-44C2-A8AA-79D6FA9C2AE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2000ADE8-C9C7-44C2-A8AA-79D6FA9C2AE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2000ADE8-C9C7-44C2-A8AA-79D6FA9C2AE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2000ADE8-C9C7-44C2-A8AA-79D6FA9C2AE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6C27295-740F-40B5-917A-0513600B9892}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6C27295-740F-40B5-917A-0513600B9892}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6C27295-740F-40B5-917A-0513600B9892}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6C27295-740F-40B5-917A-0513600B9892}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4132B836-43EB-4D5C-9C96-79D9A1A28AD6} = {0B95E743-8C93-43C0-AB95-D4B318458FC9}
+		{40B8CC3F-9585-4B3D-86FF-A192D212A30F} = {0BCCCD89-69AE-4E43-AF91-6F415E5FE55F}
+		{4B27676D-7CC5-4F18-91A7-9144BC57E756} = {0BCCCD89-69AE-4E43-AF91-6F415E5FE55F}
+		{2000ADE8-C9C7-44C2-A8AA-79D6FA9C2AE0} = {0BCCCD89-69AE-4E43-AF91-6F415E5FE55F}
+		{C6C27295-740F-40B5-917A-0513600B9892} = {0BCCCD89-69AE-4E43-AF91-6F415E5FE55F}
 	EndGlobalSection
 EndGlobal
